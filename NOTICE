@@ -1,0 +1,13 @@
+Atbash Jakarta OpenTelemetry - Integration of OpenTelemetry Java SDK for Jakarta EE 10.
+
+Copyright 2022 by Rudy De Busscher
+
+------------------------------------------------------------------------
+See the file LICENSE
+------------------------------------------------------------------------
+
+Some classes or methods of this software were originally based on the following:
+* SmallRye OpenTelemetry
+  https://github.com/smallrye/smallrye-opentelemetry
+  under Apache License, v2.0
+

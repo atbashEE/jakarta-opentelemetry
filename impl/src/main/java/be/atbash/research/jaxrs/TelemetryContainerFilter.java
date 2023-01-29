@@ -96,6 +96,8 @@ public class TelemetryContainerFilter implements ContainerRequestFilter, Contain
             return;
         }
 
+        scope.close();
+
         Span span = (Span) request.getProperty(OTEL_SPAN_SERVER_SPAN);
 
         // End the span that was started when request was received.

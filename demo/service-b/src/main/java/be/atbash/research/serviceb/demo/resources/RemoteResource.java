@@ -15,7 +15,10 @@
  */
 package be.atbash.research.serviceb.demo.resources;
 
+import io.opentelemetry.api.baggage.Baggage;
+import io.opentelemetry.api.trace.Span;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 
@@ -23,8 +26,15 @@ import jakarta.ws.rs.Path;
 @ApplicationScoped
 public class RemoteResource {
 
+    @Inject
+    private Span curentSpan;
+
     @GET
     public String remote() {
+        System.out.println("BaggageItems" + Baggage.current()
+                .asMap());
+
+        curentSpan.setAttribute("spanAttributeServiceB", "attribute2");
         return "Remote value";
     }
 }

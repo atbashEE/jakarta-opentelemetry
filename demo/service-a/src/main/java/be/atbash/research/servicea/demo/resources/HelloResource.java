@@ -16,6 +16,8 @@
 package be.atbash.research.servicea.demo.resources;
 
 import be.atbash.research.servicea.demo.service.HelloService;
+import io.opentelemetry.api.baggage.Baggage;
+import io.opentelemetry.api.trace.Span;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -29,10 +31,21 @@ public class HelloResource {
     @Inject
     private HelloService helloService;
 
+    @Inject
+    private Span curentSpan;
 
     @GET
     @Path("/{name}")
     public String hello(@PathParam("name") String name) {
+        // Example of BaggageItems usage
+        Baggage.current()
+                .toBuilder()
+                .put("baggageItem", name)
+                .build()
+                .makeCurrent();
+
+        curentSpan.setAttribute("spanAttributeServiceA", "attribute1");
+
         return String.format(helloService.defineHelloMessage(), name);
     }
 }

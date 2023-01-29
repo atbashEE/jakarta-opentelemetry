@@ -35,3 +35,6 @@ If you make use of MicroProfile Rest Client, this registration is performed auto
 
 If you want to visualize any CDI method call within the trace, annotate it with `io.opentelemetry.instrumentation.annotations.WithSpan` and a Span will be created with the method name as identification.
 
+Ability to define custom Span attributes.
+
+BaggageItems are not propagated (but can be implemented by using the Propagator of OpenTelemetry SDK)

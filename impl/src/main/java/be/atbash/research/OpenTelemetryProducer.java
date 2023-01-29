@@ -55,6 +55,7 @@ public class OpenTelemetryProducer {
         openTelemetry = OpenTelemetrySdk.builder()
                 .setTracerProvider(sdkTracerProvider)
                 .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+                // You should also add W3CBaggagePropagator in case you want to propagate Baggage items.
                 .buildAndRegisterGlobal();
     }
 

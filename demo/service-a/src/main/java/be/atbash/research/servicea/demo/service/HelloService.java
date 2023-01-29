@@ -16,6 +16,7 @@
 package be.atbash.research.servicea.demo.service;
 
 import be.atbash.research.servicea.demo.remote.RemoteService;
+import io.opentelemetry.api.baggage.Baggage;
 import io.opentelemetry.instrumentation.annotations.WithSpan;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -30,6 +31,9 @@ public class HelloService {
 
     @WithSpan
     public String defineHelloMessage() {
-        return "Hello %s "+remoteService.remote();
+        System.out.println("BaggageItems" + Baggage.current()
+                .asMap());
+
+        return "Hello %s " + remoteService.remote();
     }
 }

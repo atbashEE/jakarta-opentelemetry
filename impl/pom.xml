@@ -31,7 +31,7 @@
     <name>Atbash Jakarta OpenTelemetry implementation</name>
 
     <properties>
-        <version.opentelemetry>1.21.0</version.opentelemetry>
+        <version.opentelemetry>1.22.0</version.opentelemetry>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-semconv</artifactId>
-            <version>1.21.0-alpha</version>
+            <version>${version.opentelemetry}-alpha</version>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
